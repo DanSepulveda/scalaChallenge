@@ -3,8 +3,7 @@ import productControllers from '../controllers/productControllers'
 
 const router = express.Router()
 
-router.route('/query')
+router.route('/search')
     .get(productControllers.getProducts)
-
 
 export default router
