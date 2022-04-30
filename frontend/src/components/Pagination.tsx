@@ -13,17 +13,17 @@ const Pagination = (props: PaginationProps): JSX.Element => {
     }
 
     const previousPage = page !== 1 &&
-        <div className='d-flex align-items-center link rounded-1'>
+        <div className='d-flex align-items-center link rounded-1' onClick={() => changePage(page - 1)}>
             <MdArrowBackIosNew />
-            <span onClick={() => changePage(page - 1)}>Anterior</span>
+            <span>Anterior</span>
         </div>
 
     const actualPage = <span className='mx-5 info'>{`Página ${page} de ${pageQty}`}</span>
 
     const nextPage = page !== pageQty &&
-        <div className='d-flex align-items-center link rounded-1'>
+        <div className='d-flex align-items-center link rounded-1' onClick={() => changePage(page + 1)}>
             <MdArrowForwardIos />
-            <span onClick={() => changePage(page + 1)}>Siguiente</span>
+            <span>Siguiente</span>
         </div>
 
     return (
