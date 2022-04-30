@@ -14,5 +14,6 @@ export interface ContextProps {
     allProducts: ProductProps[] | [],
     setAllProducts: Dispatch<SetStateAction<ProductProps>> | Dispatch<SetStateAction<never[]>>,
     filteredProducts: ProductProps[] | [],
-    setFilteredProducts: Dispatch<SetStateAction<ProductProps>> | Dispatch<SetStateAction<never[]>>
+    setFilteredProducts: Dispatch<SetStateAction<ProductProps>> | Dispatch<SetStateAction<never[]>>,
+    getProducts: Function
 }

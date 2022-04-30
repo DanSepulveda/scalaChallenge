@@ -7,3 +7,30 @@ html * {
 :root {
     width: 100%;
 }
+
+body {
+    background-color: #ededed;
+}
+
+header {
+    background-color: #FFF159 !important;
+}
+
+input {
+    outline: none;
+    border: none;
+    color: #444;
+    width: 500px;
+}
+
+div.icon-search {
+    margin-left: -35px;
+    padding: 7px;
+    cursor: pointer;
+    border-left: 1px solid rgba(68, 68, 68, 0.1);
+}
+
+header svg {
+    color: #444;
+    font-size: 20px;
+}
