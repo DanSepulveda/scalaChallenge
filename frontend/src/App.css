@@ -34,3 +34,11 @@ header svg {
     color: #444;
     font-size: 20px;
 }
+
+div.products-container {
+    background-color: #fff;
+}
+
+div.card-container {
+    /* background-color: #fff; */
+}
