@@ -20,7 +20,7 @@ const ProductProvider = (props: { children: ReactNode }) => {
         dispatch({ type: 'LOADING', payload: null })
         dispatch({ type: 'FETCHED', payload: true })
         try {
-            const response = await axios.get(`http://localhost:4000/api/search?query=${query}`)
+            const response = await axios.get(`https://scala-dansep.herokuapp.com/api/search?query=${query}`)
             if (response.status === 200) {
                 dispatch({ type: 'GET_PRODUCTS', payload: response.data })
             }
