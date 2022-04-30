@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react'
+
 export type ProductProps = {
     id: string,
     title: string,
@@ -22,4 +24,16 @@ export interface ContextProps {
 export interface MessageProps {
     icon: string,
     message: string
+}
+
+export interface PaginationProps {
+    page: number,
+    setPage: Dispatch<SetStateAction<number>>,
+    pageQty: number
+}
+
+export interface OrderProps {
+    page: number,
+    total: number,
+    setPage: Dispatch<SetStateAction<number>>
 }
