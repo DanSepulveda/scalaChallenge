@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from 'react'
-
 export type ProductProps = {
     id: string,
     title: string,
@@ -12,14 +10,13 @@ export type ProductProps = {
 
 export interface ContextProps {
     allProducts: ProductProps[] | [],
-    setAllProducts: Dispatch<SetStateAction<ProductProps[]>>,
     filteredProducts: ProductProps[] | [],
-    setFilteredProducts: Dispatch<SetStateAction<ProductProps[]>>,
-    getProducts: Function,
     loading: boolean,
     fetched: boolean,
+    search: string,
+    getProducts: Function,
     filterByCondition: Function,
-    search: string
+    orderByPrice: Function
 }
 
 export interface MessageProps {

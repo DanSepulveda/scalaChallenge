@@ -1,56 +1,60 @@
 import axios from 'axios'
-import { ReactNode, useState } from 'react'
+import { ReactNode, useReducer } from 'react'
+import { ProductProps } from '../types'
 import ProductContext from './ProductContext'
+import productsReducer from './productsReducer'
 
 const ProductProvider = (props: { children: ReactNode }) => {
-    const initial = [{
-        id: '',
-        title: '',
-        price: 0,
-        currency_id: '',
-        available_quantity: 0,
-        thumbnail: '',
-        condition: ''
-    }]
-    const [allProducts, setAllProducts] = useState(initial)
-    const [filteredProducts, setFilteredProducts] = useState(initial)
-    const [loading, setLoading] = useState<boolean>(false)
-    const [fetched, setFetched] = useState<boolean>(false)
-    const [search, setSearch] = useState<string>('')
+    const [state, dispatch] = useReducer(productsReducer, {
+        allProducts: [],
+        filteredProducts: [],
+        loading: false,
+        fetched: false,
+        search: null
+    })
+
+    const { allProducts, filteredProducts, loading, fetched, search } = state
 
     const getProducts = async (query: string) => {
-        setSearch(query[0].toUpperCase() + query.slice(1).toLowerCase())
-        setLoading(true)
-        setFetched(true)
+        dispatch({ type: 'SET_SEARCH', payload: query[0].toUpperCase() + query.slice(1).toLowerCase() })
+        dispatch({ type: 'LOADING', payload: null })
+        dispatch({ type: 'FETCHED', payload: true })
         try {
             const response = await axios.get(`http://localhost:4000/api/search?query=${query}`)
             if (response.status === 200) {
-                setAllProducts(response.data)
-                setFilteredProducts(response.data)
+                dispatch({ type: 'GET_PRODUCTS', payload: response.data })
             }
         } catch (error: unknown) {
             return error
         }
-        setLoading(false)
+        dispatch({ type: 'LOADING', payload: null })
+    }
+
+    const orderByPrice = (order: string): void => {
+        let orderedProducts = []
+        if (order === 'low') {
+            orderedProducts = filteredProducts.sort((a: ProductProps, b: ProductProps) => a.price - b.price)
+        } else {
+            orderedProducts = filteredProducts.sort((a: ProductProps, b: ProductProps) => b.price - a.price)
+        }
+        dispatch({ type: 'ORDER_PRODUCTS', payload: orderedProducts })
     }
 
     const filterByCondition = (condition: string): void => {
-        const productsToShow = allProducts.filter(product => product.condition.includes(condition))
-        setFilteredProducts(productsToShow)
+        dispatch({ type: 'FILTER', payload: condition })
     }
 
 
     return (
         <ProductContext.Provider value={{
             allProducts,
-            setAllProducts,
             filteredProducts,
-            setFilteredProducts,
-            getProducts,
             loading,
             fetched,
+            search,
+            getProducts,
             filterByCondition,
-            search
+            orderByPrice
         }}>
             {props.children}
         </ProductContext.Provider>

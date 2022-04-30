@@ -3,7 +3,7 @@ const CardPrice = (props: { price: number, currency: string }): JSX.Element => {
 
     const formatter = new Intl.NumberFormat('es-CL', {
         style: 'currency',
-        currency,
+        currency: 'CLP',
     })
 
     return (
