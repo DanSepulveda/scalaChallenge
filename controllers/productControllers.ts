@@ -2,10 +2,12 @@ import axios from 'axios'
 import { ProductType } from '../types'
 import { Request, Response } from 'express'
 import cache from '../productCache'
+import removeDiacritics from '../normalize'
 
 const productControllers = {
     getProducts: async (req: Request, res: Response) => {
-        const { query } = req.query
+        let { query } = req.query
+        query = removeDiacritics(query)
 
         const values = cache.get(`${query}`)
 
