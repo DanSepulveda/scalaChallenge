@@ -3,8 +3,17 @@ import { ReactNode, useState } from 'react'
 import ProductContext from './ProductContext'
 
 const ProductProvider = (props: { children: ReactNode }) => {
-    const [allProducts, setAllProducts] = useState([])
-    const [filteredProducts, setFilteredProducts] = useState([])
+    const initial = [{
+        id: '',
+        title: '',
+        price: 0,
+        currency_id: '',
+        available_quantity: 0,
+        thumbnail: '',
+        condition: ''
+    }]
+    const [allProducts, setAllProducts] = useState(initial)
+    const [filteredProducts, setFilteredProducts] = useState(initial)
     const [loading, setLoading] = useState<boolean>(false)
     const [fetched, setFetched] = useState<boolean>(false)
 
@@ -23,6 +32,11 @@ const ProductProvider = (props: { children: ReactNode }) => {
         setLoading(false)
     }
 
+    const filterByCondition = (condition: string): void => {
+        const productsToShow = allProducts.filter(product => product.condition.includes(condition))
+        setFilteredProducts(productsToShow)
+    }
+
 
     return (
         <ProductContext.Provider value={{
@@ -32,7 +46,8 @@ const ProductProvider = (props: { children: ReactNode }) => {
             setFilteredProducts,
             getProducts,
             loading,
-            fetched
+            fetched,
+            filterByCondition
         }}>
             {props.children}
         </ProductContext.Provider>

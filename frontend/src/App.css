@@ -16,7 +16,7 @@ header {
     background-color: #FFF159 !important;
 }
 
-input {
+input[type=text] {
     outline: none;
     border: none;
     color: #444;
@@ -35,7 +35,8 @@ header svg {
     font-size: 20px;
 }
 
-div.products-container {
+div.products-container,
+div.filter-container {
     background-color: #fff;
 }
 

@@ -1,4 +1,4 @@
-const CardStock = (props: { qty: number }) => {
+const CardStock = (props: { qty: number }): JSX.Element => {
     const { qty } = props
 
     return (

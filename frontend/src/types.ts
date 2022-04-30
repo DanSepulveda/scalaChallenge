@@ -12,12 +12,13 @@ export type ProductProps = {
 
 export interface ContextProps {
     allProducts: ProductProps[] | [],
-    setAllProducts: Dispatch<SetStateAction<ProductProps>> | Dispatch<SetStateAction<never[]>>,
+    setAllProducts: Dispatch<SetStateAction<ProductProps[]>>,
     filteredProducts: ProductProps[] | [],
-    setFilteredProducts: Dispatch<SetStateAction<ProductProps>> | Dispatch<SetStateAction<never[]>>,
+    setFilteredProducts: Dispatch<SetStateAction<ProductProps[]>>,
     getProducts: Function,
     loading: boolean,
-    fetched: boolean
+    fetched: boolean,
+    filterByCondition: Function
 }
 
 export interface MessageProps {

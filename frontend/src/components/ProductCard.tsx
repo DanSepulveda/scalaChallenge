@@ -5,7 +5,7 @@ import CardPrice from './atoms/CardPrice'
 import CardStock from './atoms/CardStock'
 import CardCondition from './atoms/CardCondition'
 
-const ProductCard = (props: { product: ProductProps }) => {
+const ProductCard = (props: { product: ProductProps }): JSX.Element => {
     const { title, price, currency_id, available_quantity, condition, thumbnail } = props.product
 
     return (

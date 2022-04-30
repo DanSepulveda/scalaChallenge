@@ -1,4 +1,4 @@
-const CardPrice = (props: { price: number, currency: string }) => {
+const CardPrice = (props: { price: number, currency: string }): JSX.Element => {
     const { price, currency } = props
 
     const formatter = new Intl.NumberFormat('es-CL', {

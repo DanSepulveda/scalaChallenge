@@ -1,6 +1,10 @@
-const CardCondition = (props: { condition: string }) => {
+import useCondition from '../../hooks/useCondition'
+
+const CardCondition = (props: { condition: string }): JSX.Element => {
+    const state = useCondition(props.condition)
+
     return (
-        <span>{props.condition === 'new' ? 'Nuevo' : 'Usado'}</span>
+        <span>{state}</span>
     )
 }
 

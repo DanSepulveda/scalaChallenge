@@ -19,6 +19,7 @@ const SearchBar = (): JSX.Element => {
                         setValue('')
                     }
                 }}
+                type='text'
             />
             <div className='icon-search'
                 onClick={() => {
