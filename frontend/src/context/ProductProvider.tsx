@@ -16,8 +16,10 @@ const ProductProvider = (props: { children: ReactNode }) => {
     const [filteredProducts, setFilteredProducts] = useState(initial)
     const [loading, setLoading] = useState<boolean>(false)
     const [fetched, setFetched] = useState<boolean>(false)
+    const [search, setSearch] = useState<string>('')
 
     const getProducts = async (query: string) => {
+        setSearch(query[0].toUpperCase() + query.slice(1).toLowerCase())
         setLoading(true)
         setFetched(true)
         try {
@@ -47,7 +49,8 @@ const ProductProvider = (props: { children: ReactNode }) => {
             getProducts,
             loading,
             fetched,
-            filterByCondition
+            filterByCondition,
+            search
         }}>
             {props.children}
         </ProductContext.Provider>

@@ -18,7 +18,8 @@ export interface ContextProps {
     getProducts: Function,
     loading: boolean,
     fetched: boolean,
-    filterByCondition: Function
+    filterByCondition: Function,
+    search: string
 }
 
 export interface MessageProps {
