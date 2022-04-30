@@ -42,3 +42,11 @@ div.products-container {
 svg.loader-icon {
     font-size: 60px;
 }
+
+.green {
+    color: #198754;
+}
+
+.red {
+    color: #DC3545;
+}

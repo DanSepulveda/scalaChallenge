@@ -1,6 +1,6 @@
 const CardCondition = (props: { condition: string }) => {
     return (
-        <span>{`Producto ${props.condition === 'new' ? 'nuevo' : 'usado'}`}</span>
+        <span>{props.condition === 'new' ? 'Nuevo' : 'Usado'}</span>
     )
 }
 
