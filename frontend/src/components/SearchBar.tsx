@@ -1,10 +1,12 @@
 import { useContext, useState } from 'react'
 import ProductContext from '../context/ProductContext'
 import { BsSearch } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 
 const SearchBar = (): JSX.Element => {
     const [value, setValue] = useState<string>('')
     const { getProducts } = useContext(ProductContext)
+    const navigate = useNavigate()
 
     return (
         <header className='container-fluid py-4 d-flex justify-content-center align-items-center shadow-sm'>
@@ -17,6 +19,7 @@ const SearchBar = (): JSX.Element => {
                     if (e.key === 'Enter') {
                         value && getProducts(value)
                         setValue('')
+                        navigate(value)
                     }
                 }}
                 type='text'
