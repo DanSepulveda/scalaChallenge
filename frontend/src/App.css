@@ -39,6 +39,6 @@ div.products-container {
     background-color: #fff;
 }
 
-div.card-container {
-    /* background-color: #fff; */
+svg.loader-icon {
+    font-size: 60px;
 }

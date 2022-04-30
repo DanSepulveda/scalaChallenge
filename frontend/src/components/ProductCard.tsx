@@ -1,22 +1,23 @@
 import { ProductProps } from '../types'
-import CardCondition from './atoms/CardCondition'
+import CardImage from './atoms/CardImage'
+import CardTitle from './atoms/CardTitle'
 import CardPrice from './atoms/CardPrice'
 import CardStock from './atoms/CardStock'
-import CardTitle from './atoms/CardTitle'
+import CardCondition from './atoms/CardCondition'
 
 const ProductCard = (props: { product: ProductProps }) => {
     const { title, price, currency_id, available_quantity, condition, thumbnail } = props.product
 
     return (
-        <div className='card-container d-flex border-bottom'>
-            <img src={thumbnail} width={120} height={120} className='m-3' />
+        <div className='d-flex border-bottom pe-4'>
+            <CardImage src={thumbnail} />
             <div>
                 <CardTitle>{title}</CardTitle>
                 <CardPrice currency={currency_id} price={price} />
                 <CardStock qty={available_quantity} />
                 <CardCondition condition={condition} />
             </div>
-        </div>
+        </div >
     )
 }
 

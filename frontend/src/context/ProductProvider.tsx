@@ -5,8 +5,12 @@ import ProductContext from './ProductContext'
 const ProductProvider = (props: { children: ReactNode }) => {
     const [allProducts, setAllProducts] = useState([])
     const [filteredProducts, setFilteredProducts] = useState([])
+    const [loading, setLoading] = useState<boolean>(false)
+    const [fetched, setFetched] = useState<boolean>(false)
 
     const getProducts = async (query: string) => {
+        setLoading(true)
+        setFetched(true)
         try {
             const response = await axios.get(`http://localhost:4000/api/search?query=${query}`)
             if (response.status === 200) {
@@ -16,6 +20,7 @@ const ProductProvider = (props: { children: ReactNode }) => {
         } catch (error: unknown) {
             return error
         }
+        setLoading(false)
     }
 
 
@@ -25,7 +30,9 @@ const ProductProvider = (props: { children: ReactNode }) => {
             setAllProducts,
             filteredProducts,
             setFilteredProducts,
-            getProducts
+            getProducts,
+            loading,
+            fetched
         }}>
             {props.children}
         </ProductContext.Provider>

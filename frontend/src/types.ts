@@ -15,5 +15,12 @@ export interface ContextProps {
     setAllProducts: Dispatch<SetStateAction<ProductProps>> | Dispatch<SetStateAction<never[]>>,
     filteredProducts: ProductProps[] | [],
     setFilteredProducts: Dispatch<SetStateAction<ProductProps>> | Dispatch<SetStateAction<never[]>>,
-    getProducts: Function
+    getProducts: Function,
+    loading: boolean,
+    fetched: boolean
+}
+
+export interface MessageProps {
+    icon: string,
+    message: string
 }

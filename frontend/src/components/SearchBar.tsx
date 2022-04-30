@@ -11,18 +11,18 @@ const SearchBar = (): JSX.Element => {
             <input
                 className='py-2 px-3 shadow-sm'
                 value={value}
-                onChange={(e) => setValue(e.target.value)}
                 placeholder='Buscar productos...'
+                onChange={(e) => setValue(e.target.value)}
                 onKeyDownCapture={(e) => {
                     if (e.key === 'Enter') {
-                        getProducts(value)
+                        value && getProducts(value)
                         setValue('')
                     }
                 }}
             />
             <div className='icon-search'
                 onClick={() => {
-                    getProducts(value)
+                    value && getProducts(value)
                     setValue('')
                 }}
             >
